@@ -3,44 +3,34 @@ using namespace std;
 
 int N, M;
 
-bool visited[9] = { false };
-int user[9] = { 0 };
+bool visited[9];
+int user[9];
 
-void back_dfs(int now) {
-  if (now == M) {
-    bool flag = true;
-    int top = -1;
-    for (int i = 0; i < M; i++) {
-      if (top < user[i])
-        top = user[i];
-      else
-        flag = false;
+void back_dfs(int count, int now) {
+  if (count == M) {
+    for (int i = 0; i < count; i++) {
+      cout << user[i] << " ";
     }
-    if (flag) {
-      for (int i = 0; i < M; i++) {
-        cout << user[i] << " ";
-      }
-      cout << "\n";
-    }
+    cout << "\n";
   }
   else {
-    for (int i = 1; i <= N; i++) {
-      if (!visited[i]) {
-        user[now] = i;
+    for (int i = now; i <= N; i++) {
+      if (!visited[i]) 
+      {
+        user[count] = i;
         visited[i] = true;
-        back_dfs(now + 1);
+        back_dfs(count + 1, i + 1);
         visited[i] = false;
       }
     }
   }
 }
 
-int main() {
-  cin.tie(NULL);
-  ios_base::sync_with_stdio(false);
 
+int main() {
   cin >> N >> M;
-  
-  back_dfs(0);
+
+  back_dfs(0, 1);
+
   return 0;
 }
