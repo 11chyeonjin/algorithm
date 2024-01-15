@@ -8,7 +8,11 @@
 
 ### 분류
 
-덱(deque), 파싱(parsing), 구현(implementation), 문자열(string), 자료 구조(data_structures)
+덱, 파싱, 구현, 문자열, 자료 구조
+
+### 제출 일자
+
+2022년 7월 6일 23:23:29
 
 ### 문제 설명
 
