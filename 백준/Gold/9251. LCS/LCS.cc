@@ -1,29 +1,27 @@
 #include <iostream>
+#include <vector>
 using namespace std;
-
-int user[1001][1001] = { 0 };
 
 int main() {
   cin.tie(NULL);
   ios_base::sync_with_stdio(false);
 
-  string first;
-  string second;
-  cin >> first >> second;
+  string s1, s2;
+  cin >> s1 >> s2;
 
-  int fs = first.size();
-  int ss = second.size();
-  for (int i = 1; i <= fs; i++) {
-    for (int j = 1; j <= ss; j++) {
-      if (first[i - 1] == second[j - 1]) {
-        user[i][j] = user[i - 1][j - 1] + 1;
-      }
-      else {
-        user[i][j] = max(user[i-1][j], user[i][j-1]);
+  vector<vector<int>> dp(s1.size() + 1, vector<int> (s2.size() + 1, 0));
+  
+  for (int i = 1; i <= s1.size(); i++) {
+    for (int j = 1; j <= s2.size(); j++) {
+      if (s1[i - 1] == s2[j - 1]) {
+        dp[i][j] = dp[i - 1][j - 1] + 1;
+      } else {
+        dp[i][j] = max(dp[i][j - 1], dp[i - 1][j]);
       }
     }
   }
 
-  cout << user[fs][ss];
+  cout << dp[s1.size()][s2.size()];
+
   return 0;
 }
