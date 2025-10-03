@@ -1,9 +1,9 @@
 function solution(lines) {
     function toNum(str) {
         const [, endStr, timeStr] = str.split(' ');
-        const [hh, mm, ss] = endStr.split(':');
+        const [hh, mm, ss] = endStr.split(':').map(Number);
         
-        let end = Number(hh) * (60 ** 2) + Number(mm) * 60 + Number(ss);
+        let end = hh * (60 ** 2) + mm * 60 + ss;
         
         let time = Number(timeStr.slice(0, -1));
         
@@ -47,7 +47,8 @@ function solution(lines) {
                 break;
             }
         }
-        maxTask = Math.max(maxTask, tmpTask);
+        
+        // maxTask = Math.max(maxTask, tmpTask);
 
         let endTime = endArr[ei];
         tmpTask = 0;
@@ -56,6 +57,7 @@ function solution(lines) {
                 tmpTask++;
             }
         }
+        
         maxTask = Math.max(maxTask, tmpTask);
     }
     
