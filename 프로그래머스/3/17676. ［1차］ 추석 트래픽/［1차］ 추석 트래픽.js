@@ -25,40 +25,26 @@ function solution(lines) {
     
     let ei = 0;
     
-    let curTask = 0;
     let curTime = 0;
     
     let maxTask = 0;
     
     for (let si = 0; si < startArr.length; si++) {
         const curTime = startArr[si];
-        curTask++;
 
         while (ei < endArr.length && endArr[ei] < curTime) {
-            curTask--;
             ei++;
         }
 
-        let tmpTask = curTask;
-        for (let sj = si + 1; sj < startArr.length; sj++) {
-            if (startArr[sj] < curTime + 1) {
-                tmpTask++;
-            } else {
-                break;
-            }
-        }
-        
-        // maxTask = Math.max(maxTask, tmpTask);
-
         let endTime = endArr[ei];
-        tmpTask = 0;
+        let tmp = 0;
         for (let sj = 0; sj < startArr.length; sj++) {
             if (startArr[sj] < endTime + 1 && endArr[sj] >= endTime) {
-                tmpTask++;
+                tmp++;
             }
         }
         
-        maxTask = Math.max(maxTask, tmpTask);
+        maxTask = Math.max(maxTask, tmp);
     }
     
     return maxTask;
