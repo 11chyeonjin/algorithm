@@ -1,6 +1,4 @@
 function solution(money) {
-    // 0번째 집을 털면 마지막 집을 털지 못함
-    
     const houseCnt = money.length;
     
     const dp0 = Array.from({ length: houseCnt }, () => 0); // 첫 집을 털지 않고 시작
